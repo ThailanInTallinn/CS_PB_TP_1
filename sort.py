@@ -1,5 +1,10 @@
-lista = []
+count_bubble = 0
+count_selection = 0
+count_insertion = 0
+
+
 with open("./saida.txt", "r") as file:
+    lista = []
     for item in file:
         print(item, end=" ")
         lista.append(item)
@@ -10,6 +15,7 @@ with open("./saida.txt", "r") as file:
     while(not done):
         done = True
         for i in range(0, len(lista) - 1):
+            count_bubble += 1
             if(lista[i] > lista[i + 1]):
                 temp = lista[i + 1]
                 lista[i + 1] = lista[i]
@@ -17,9 +23,7 @@ with open("./saida.txt", "r") as file:
                 done = False
 
     print("Bubble sort: ")
-    for item in lista:
-        print(item)
-
+    print(lista)
 #Selection sort
 
 with open("./saida.txt", "r") as file:
@@ -31,6 +35,7 @@ with open("./saida.txt", "r") as file:
         min_index = i
 
         for j in range(i + 1, len(lista)):
+            count_selection += 1
             if(lista[j] < lista[min_index]):
                 min_index = j
 
@@ -38,6 +43,7 @@ with open("./saida.txt", "r") as file:
         lista[i] = lista[min_index]
         lista[i] = temp
 
+print("Selection sort:")
 print(lista)
 
 #Insertion sort
@@ -52,9 +58,12 @@ for i in range(1, len(lista)):
     j = i - 1
     
     while(j >= 0) and (lista[j] > chave):
+        count_insertion += 1
         lista[j + 1] = lista[j]
         j -= 1
 
     lista[j + 1] = chave
 
+print("Insertion sort")
 print(lista)
+print(f"Bubble: {count_bubble} | Selection: {count_selection} | Insertion: {count_insertion}")
