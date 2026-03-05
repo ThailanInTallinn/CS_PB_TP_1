@@ -41,7 +41,7 @@ with open("./saida.txt", "r") as file:
 
         temp = lista[i]
         lista[i] = lista[min_index]
-        lista[i] = temp
+        lista[min_index] = temp
 
 print("Selection sort:")
 print(lista)
